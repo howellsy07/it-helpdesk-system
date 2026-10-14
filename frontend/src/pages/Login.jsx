@@ -28,16 +28,16 @@ export default function Login() {
     <main className="login-page">
       <section className="login-intro">
         <p className="eyebrow">CCS112 · LABORATORY EXAM</p>
-        <h1>Keep every medicine accounted for.</h1>
+        <h1>Keep every ticket accounted for.</h1>
         <p>A focused inventory workspace powered by React, Laravel, and a real database.</p>
-        <div className="login-stat"><strong>Rx</strong><span>Reliable records<br />after every refresh</span></div>
+        <div className="login-stat"><strong>Tix</strong><span>Reliable records<br />after every refresh</span></div>
       </section>
 
       <section className="login-card">
         <span className="section-number">01</span>
         <p className="eyebrow dark">SECURE ACCESS</p>
         <h2>Welcome back</h2>
-        <p className="muted">Sign in to manage the pharmacy catalog.</p>
+        <p className="muted">Sign in to manage the Helpdesk catalog.</p>
 
         <form className="medicine-form" onSubmit={submit}>
           <label>
@@ -52,7 +52,7 @@ export default function Login() {
           <button className="primary-button wide" type="submit">Sign in</button>
         </form>
 
-        <p className="login-hint">Demo: <strong>pharmacist</strong> / <strong>med123</strong></p>
+        <p className="login-hint">Demo: <strong>itadmin</strong> / <strong>helpdesk123</strong></p>
       </section>
     </main>
   );
