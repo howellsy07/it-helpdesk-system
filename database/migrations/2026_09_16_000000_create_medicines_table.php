@@ -8,23 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('medicines', function (Blueprint $table): void {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('brand_name');
-            $table->string('generic_name')->nullable();
-            $table->string('category', 100);
-            $table->unsignedInteger('stock');
-            $table->string('quantity', 100);
-            $table->string('manufacturer')->nullable();
-            $table->date('expiry_date')->nullable();
-            $table->text('description')->nullable();
+            $table->string('title');
+            $table->text('description');
+            $table->string('priority')->default('low'); // low, medium, high, urgent
+            $table->string('status')->default('open');   // open, in-progress, resolved, closed
+            $table->string('category')->nullable();     // bug, hardware, software, network
+            $table->string('user_email')->nullable();    // who submitted the ticket
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('medicines');
+        Schema::dropIfExists('tickets');
     }
 };
-
