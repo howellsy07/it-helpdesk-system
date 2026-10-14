@@ -10,7 +10,7 @@ export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  if (isAuthenticated) return <Navigate to="/medicines" replace />;
+  if (isAuthenticated) return <Navigate to="/" replace />;
 
   function submit(event) {
     event.preventDefault();
@@ -21,7 +21,7 @@ export default function Login() {
       return;
     }
 
-    navigate(location.state?.from || '/medicines', { replace: true });
+    navigate(location.state?.from || '/', { replace: true });
   }
 
   return (
@@ -29,7 +29,7 @@ export default function Login() {
       <section className="login-intro">
         <p className="eyebrow">CCS112 · LABORATORY EXAM</p>
         <h1>Keep every ticket accounted for.</h1>
-        <p>A focused inventory workspace powered by React, Laravel, and a real database.</p>
+        <p>A calm, focused workspace for tracking requests, resolving issues, and keeping your team moving.</p>
         <div className="login-stat"><strong>Tix</strong><span>Reliable records<br />after every refresh</span></div>
       </section>
 
@@ -37,7 +37,7 @@ export default function Login() {
         <span className="section-number">01</span>
         <p className="eyebrow dark">SECURE ACCESS</p>
         <h2>Welcome back</h2>
-        <p className="muted">Sign in to manage the Helpdesk catalog.</p>
+        <p className="muted">Sign in to manage your support queue.</p>
 
         <form className="medicine-form" onSubmit={submit}>
           <label>
@@ -52,9 +52,8 @@ export default function Login() {
           <button className="primary-button wide" type="submit">Sign in</button>
         </form>
 
-        <p className="login-hint">Demo: <strong>itadmin</strong> / <strong>helpdesk123</strong></p>
+        <p className="login-hint">Demo access: <strong>itadmin</strong> / <strong>helpdesk123</strong></p>
       </section>
     </main>
   );
 }
-

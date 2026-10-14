@@ -2,24 +2,22 @@
 
 namespace Database\Seeders;
 
-use App\Models\Medicine;
+use App\Models\Ticket;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        Medicine::query()->firstOrCreate(
-            ['brand_name' => 'Biogesic', 'quantity' => '500 mg'],
+        Ticket::query()->firstOrCreate(
+            ['title' => 'Welcome to Helpdesk Hub'],
             [
-                'generic_name' => 'Paracetamol',
-                'category' => 'Pain Relief',
-                'stock' => 48,
-                'manufacturer' => 'Unilab',
-                'expiry_date' => now()->addYear()->toDateString(),
-                'description' => 'For the relief of minor aches and fever.',
+                'description' => 'This sample ticket confirms that your support queue is ready.',
+                'priority' => 'low',
+                'status' => 'open',
+                'category' => 'software',
+                'user_email' => 'itadmin@example.com',
             ],
         );
     }
 }
-

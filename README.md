@@ -1,28 +1,24 @@
-# Medicine Inventory System
+# Helpdesk Hub
 
-A laboratory-exam project that combines a **Laravel 12 REST API**, an **Eloquent/SQLite database**, and a **React + Vite + React Router** single-page application.
+A small helpdesk application with a **Laravel 12 REST API** and a **React + Vite + React Router** frontend.
 
 ## Included requirements
 
-- Default login screen with protected routes
-- Required credentials: `pharmacist` / `med123`
-- Medicine List, Add Medicine, and Medicine Details screens
-- Fixed bottom-right add button on the list screen
-- Client-side and Laravel server-side inline validation
-- Loading, empty, and API error states
-- REST endpoints for listing, creating, and viewing medicines
-- Data persistence through Eloquent and SQLite (not browser memory)
-- Responsive purple interface based on the CCS112 Task Manager design
-- Laravel feature tests for persistence, validation, list, and detail endpoints
+- Login screen with protected routes
+- Demo credentials: `itadmin` / `helpdesk123`
+- Ticket dashboard, new ticket form, and ticket details/status screens
+- Loading, empty, search, and API error states
+- Browser localStorage persistence when no API URL is configured
+- Laravel ticket API when `VITE_API_URL` is set
+- Responsive purple interface
 
 ## Project structure
 
 ```text
 medicine-inventory-system/
-├── app/                    # Laravel controllers and Eloquent model
-├── database/               # Medicine migration and sample seeder
-├── routes/api.php          # REST API routes
-├── tests/Feature/          # Backend feature tests
+├── app/                    # Laravel ticket controller and model
+├── database/               # Ticket migration and seed data
+├── routes/api.php          # Ticket API routes
 └── frontend/               # React/Vite single-page application
 ```
 
@@ -64,18 +60,20 @@ npm run dev
 
 Open `http://localhost:5173` and log in using:
 
-- Username: `pharmacist`
-- Password: `med123`
+- Username: `itadmin`
+- Password: `helpdesk123`
 
-The Vite development server forwards `/api` requests to Laravel at `http://127.0.0.1:8000`.
+Without `VITE_API_URL`, the frontend runs independently and stores tickets in the browser. To use Laravel locally, create `frontend/.env.local` with `VITE_API_URL=http://127.0.0.1:8000/api`.
 
 ## API endpoints
 
 | Method | Endpoint | Purpose |
 |---|---|---|
-| GET | `/api/medicines` | Load all medicine records |
-| POST | `/api/medicines` | Validate and save a medicine |
-| GET | `/api/medicines/{id}` | Load one medicine's full details |
+| GET | `/api/tickets` | Load all tickets |
+| POST | `/api/tickets` | Validate and save a ticket |
+| GET | `/api/tickets/{id}` | Load one ticket |
+| PUT | `/api/tickets/{id}` | Update a ticket |
+| DELETE | `/api/tickets/{id}` | Delete a ticket |
 
 ## Run the checks
 
@@ -85,12 +83,10 @@ cd frontend
 npm run build
 ```
 
-For the PDF submission, capture these five screenshots after the app is running:
+## Deploy the frontend to Vercel
 
-1. Failed login with the inline error message
-2. Medicine List showing the persistent sample medicine
-3. Add Medicine form with all fields filled before saving
-4. Medicine Details after the new record is saved
-5. Medicine List after closing and reopening both servers
+In Vercel, set the project root directory to `frontend`. The build command is `npm run build` and the output directory is `dist`. The included `frontend/vercel.json` keeps direct links such as `/tickets/1` working after refresh.
+
+The deployed frontend needs no backend because it uses localStorage by default. For a hosted Laravel API, add a Vercel environment variable named `VITE_API_URL` with the public API base URL, for example `https://example.com/api`.
 
 Created by **John Howell J. Sy** for CCS112.

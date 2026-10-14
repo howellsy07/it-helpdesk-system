@@ -13,15 +13,14 @@ export default function AppShell() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <NavLink className="brand" to="/medicines">
-          <span className="brand-mark">Rx</span>
-          <span><strong>MediStock</strong><small>Medicine Inventory</small></span>
+        <NavLink className="brand" to="/">
+          <span className="brand-mark">IT</span>
+          <span><strong>Helpdesk Hub</strong><small>IT support workspace</small></span>
         </NavLink>
 
         <nav aria-label="Main navigation">
-          <NavLink end to="/medicines">Medicine List</NavLink>
-          <NavLink to="/medicines/add">Add Medicine</NavLink>
-          <NavLink to="/medicines/details">Medicine Details</NavLink>
+          <NavLink end to="/" className={({ isActive }) => isActive ? 'active' : undefined}>Dashboard</NavLink>
+          <NavLink to="/add" className={({ isActive }) => isActive ? 'active' : undefined}>New ticket</NavLink>
         </nav>
 
         <button className="logout-button" onClick={signOut} type="button">Log out</button>
@@ -31,4 +30,3 @@ export default function AppShell() {
     </div>
   );
 }
-

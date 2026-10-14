@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => env('APP_NAME', 'Medicine Inventory'),
+    'name' => env('APP_NAME', 'Helpdesk Hub'),
     'env' => env('APP_ENV', 'production'),
     'debug' => (bool) env('APP_DEBUG', false),
     'url' => env('APP_URL', 'http://localhost'),
@@ -14,4 +14,3 @@ return [
     'previous_keys' => [...array_filter(explode(',', env('APP_PREVIOUS_KEYS', '')))],
     'maintenance' => ['driver' => env('APP_MAINTENANCE_DRIVER', 'file')],
 ];
-

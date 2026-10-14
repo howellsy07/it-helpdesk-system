@@ -10,7 +10,7 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     isAuthenticated,
     login(username, password) {
-      const isValid = username === 'pharmacist' && password === 'med123';
+      const isValid = username === 'itadmin' && password === 'helpdesk123';
       if (isValid) {
         sessionStorage.setItem('medicine-auth', 'true');
         setIsAuthenticated(true);
@@ -29,4 +29,3 @@ export function AuthProvider({ children }) {
 export function useAuth() {
   return useContext(AuthContext);
 }
-

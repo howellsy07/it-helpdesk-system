@@ -42,7 +42,27 @@ a { color: inherit; text-decoration: none; }
 .split-heading { justify-content: space-between; gap: 20px; }
 .heading-copy { gap: 14px; }
 .search-input { width: min(280px, 100%); height: 44px; padding: 0 13px; color: #2a2234; background: #fbf9fd; border: 1px solid #ddd4e7; border-radius: 12px; outline: 0; }
-.search-input:focus, .medicine-form input:focus, .medicine-form textarea:focus { border-color: #8f67bb; box-shadow: 0 0 0 3px rgba(126,76,176,.12); }
+.search-input:focus, .medicine-form input:focus, .medicine-form textarea:focus, .medicine-form select:focus { border-color: #8f67bb; box-shadow: 0 0 0 3px rgba(126,76,176,.12); }
+.section-subtitle { margin: 0; color: #786e83; font-size: .9rem; }
+.queue-actions { display: flex; align-items: center; gap: 10px; }
+.ticket-list { display: grid; gap: 9px; margin-top: 25px; }
+.ticket-row { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto auto auto 30px; align-items: center; gap: 14px; padding: 15px 16px; border: 1px solid #eee8f2; border-radius: 16px; }
+.ticket-row:hover { border-color: #d8c8e5; background: #fdfbff; }
+.ticket-avatar { display: grid; width: 42px; height: 42px; place-items: center; color: #6d42a0; background: #eee5f6; border-radius: 13px; font-weight: 800; }
+.ticket-summary { min-width: 0; }
+.ticket-summary h3 { overflow: hidden; margin: 0 0 4px; color: #2d2438; font: 700 .94rem 'Manrope', sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+.ticket-summary p { overflow: hidden; margin: 0; color: #897f92; font-size: .76rem; text-overflow: ellipsis; white-space: nowrap; }
+.ticket-badge { padding: 6px 9px; border-radius: 8px; font-size: .69rem; font-weight: 700; text-transform: capitalize; white-space: nowrap; }
+.priority-low { color: #665974; background: #f2eef6; }
+.priority-medium { color: #0369a1; background: #e0f2fe; }
+.priority-high { color: #a34b11; background: #ffedd5; }
+.priority-urgent { color: #a72f46; background: #fee7eb; }
+.status-open { color: #276d51; background: #dff5eb; }
+.status-in-progress { color: #67508c; background: #eee5f6; }
+.status-resolved, .status-closed { color: #566172; background: #edf0f4; }
+.ticket-view { color: #6d42a0; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.ticket-view span { font-size: 1rem; }
+.icon-button { color: #a72f46; background: transparent; border: 0; font-size: 1.3rem; }
 
 .medicine-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
 .medicine-card { padding: 19px; text-align: left; color: inherit; background: #fff; border: 1px solid #e9e2ef; border-radius: 18px; transition: transform .18s, box-shadow .18s, border-color .18s; }
@@ -65,8 +85,9 @@ a { color: inherit; text-decoration: none; }
 .medicine-form label { display: grid; align-content: start; gap: 7px; color: #4d4359; font-size: .86rem; font-weight: 600; }
 .medicine-form label > span { display: flex; justify-content: space-between; }
 .medicine-form label em { color: #8f67bb; font-size: .69rem; font-style: normal; text-transform: uppercase; }
-.medicine-form input, .medicine-form textarea { width: 100%; padding: 0 12px; color: #2a2234; background: #fbf9fd; border: 1px solid #ddd4e7; border-radius: 12px; outline: 0; transition: border-color .18s, box-shadow .18s; }
+.medicine-form input, .medicine-form textarea, .medicine-form select, .details-controls select { width: 100%; padding: 0 12px; color: #2a2234; background: #fbf9fd; border: 1px solid #ddd4e7; border-radius: 12px; outline: 0; transition: border-color .18s, box-shadow .18s; }
 .medicine-form input { height: 45px; }
+.medicine-form select, .details-controls select { height: 45px; }
 .medicine-form textarea { padding-top: 11px; resize: vertical; }
 .field-error { color: #bc3e55; font-weight: 500; }
 .wide-field { grid-column: 1 / -1; }
@@ -108,6 +129,16 @@ a { color: inherit; text-decoration: none; }
 .login-card h2 { margin: 16px 0 4px; font: 800 1.8rem 'Manrope', sans-serif; }
 .muted { margin: 0 0 25px; color: #786e83; }
 .login-hint { margin: 18px 0 0; color: #8b8094; text-align: center; font-size: .76rem; }
+.details-heading { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; padding-bottom: 24px; border-bottom: 1px solid #eee8f2; }
+.details-heading h1 { margin: 0 0 8px; font: 800 clamp(1.6rem, 4vw, 2.4rem)/1.1 'Manrope', sans-serif; }
+.details-heading .muted { margin: 0; font-size: .85rem; }
+.ticket-description { padding: 25px 0; border-bottom: 1px solid #eee8f2; }
+.ticket-description p:last-child { margin: 8px 0 0; color: #5c5168; line-height: 1.7; white-space: pre-wrap; }
+.details-controls { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0 0; }
+.details-controls div, .details-controls label { display: grid; gap: 6px; }
+.details-controls small, .details-controls label span { color: #897f92; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.details-controls strong { color: #453850; font-size: .9rem; text-transform: capitalize; }
+.details-controls label { min-width: 180px; }
 
 @media (max-width: 900px) {
   .topbar { flex-wrap: wrap; }
@@ -136,4 +167,12 @@ a { color: inherit; text-decoration: none; }
   .floating-add { right: 18px; bottom: 18px; }
   .login-intro { min-height: 38vh; }
   .login-card { margin-top: -28px; position: relative; }
+  .queue-actions, .details-controls { align-items: stretch; flex-direction: column; }
+  .queue-actions .primary-button { text-align: center; }
+  .ticket-row { grid-template-columns: 36px minmax(0, 1fr) 30px; gap: 10px; }
+  .ticket-avatar { width: 36px; height: 36px; }
+  .ticket-row .ticket-badge, .ticket-row .ticket-view { grid-column: 2; justify-self: start; }
+  .ticket-row .icon-button { grid-column: 3; grid-row: 1; }
+  .details-heading { flex-direction: column; }
+  .details-controls label { width: 100%; }
 }
